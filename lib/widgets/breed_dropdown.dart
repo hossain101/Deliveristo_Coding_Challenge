@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class BreedDropdown extends StatefulWidget {
   final List<String>? breedList;
   final Function(String?) onChanged;
-  String breed = "affenpinscher";
+  static String breed = "affenpinscher";
 
   BreedDropdown({required this.breedList, required this.onChanged});
 
@@ -16,11 +16,12 @@ class _BreedDropdownState extends State<BreedDropdown> {
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       hint: Text('Select Breed'),
-      value: widget.breed,
+      value: BreedDropdown.breed,
       onChanged: (String? newValue) {
         setState(() {
-          widget.breed = newValue!;
+          BreedDropdown.breed = newValue!;
         });
+        widget.onChanged(newValue!); // Call the onChanged callback
       },
       items: widget.breedList!.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(

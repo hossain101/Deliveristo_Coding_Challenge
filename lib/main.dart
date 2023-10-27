@@ -4,7 +4,7 @@ import 'package:deliveristo_coding_challenge/screens/list_by_sub_breed.dart';
 import 'package:deliveristo_coding_challenge/screens/random_by_breed.dart';
 import 'package:deliveristo_coding_challenge/screens/random_by_sub_breed.dart';
 import 'package:flutter/material.dart';
-import 'package:deliveristo_coding_challenge/screens/random_image_screen.dart'; // Import your RandomImageScreen
+import 'package:deliveristo_coding_challenge/screens/random_image_breed.dart'; // Import your RandomImageScreen
 import 'package:deliveristo_coding_challenge/screens/image_list_screen.dart'; // Import your ImageListScreen
 
 void main() {
@@ -19,13 +19,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-
       ),
       initialRoute: '/', // Set the initial route to your home screen
       routes: {
-        '/': (context) =>  HomeScreen(), // Create a HomeScreen for navigation
-        '/random_by_breed': (context) => Random_By_Breed(), // Define routes for your screens
-        '/random_by_subBreed': (context) => Random_By_SubBreed(), // Define routes for your screens
+        '/': (context) => HomeScreen(), // Create a HomeScreen for navigation
+        '/random_by_breed': (context) =>
+            Random_By_Breed(), // Define routes for your screens
+        '/random_by_subBreed': (context) =>
+            Random_By_SubBreed(), // Define routes for your screens
         '/list_by_breed': (context) => List_By_Breed(),
         '/list_by_subBreed': (context) => List_By_SubBreed(),
       },

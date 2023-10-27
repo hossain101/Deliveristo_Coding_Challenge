@@ -20,30 +20,25 @@ class _Random_By_SubBreedState extends State<Random_By_SubBreed> {
         children: [
           Center(
             child: ElevatedButton(
-              onPressed: () async{
-                final jsonData = await DogAPI.fetchRandomDogImageSubBreed(breed, subBreed);
+              onPressed: () async {
+                final jsonData =
+                    await DogAPI.fetchRandomDogImageSubBreed(breed, subBreed);
 
                 imageURL = jsonData['message'];
                 setState(() {});
-
-
-
               },
               child: const Text('Random Sub Breed'),
             ),
-
           ),
-          if(imageURL.isNotEmpty)
-
           Container(
-            child: Image.network(imageURL,
-            width: 300,
-            height: 300,),
+            child: Image.network(
+              imageURL,
+              width: 300,
+              height: 300,
+            ),
           ),
         ],
       ),
-
-
     );
   }
 }

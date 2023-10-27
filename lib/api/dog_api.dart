@@ -24,8 +24,9 @@ class DogAPI {
   //fetch random breed image
   static Future<Map<String, dynamic>> fetchRandomDogImageBreed(
       String breed) async {
-    final response = await NetworkUtils.getData(
-        'https://dog.ceo/api/breed/$breed/images/random');
+    print('$baseURL/breed/$breed/images/random');
+    final response =
+        await NetworkUtils.getData('$baseURL/breed/$breed/images/random');
 
     if (response.statusCode == 200) {
       print(response.body);
@@ -53,19 +54,19 @@ class DogAPI {
   }
 
   // list all sub breeds get
-  static Future<Map<String, dynamic>> fetchRandomDogImageByBreed(
-      String breed, String subBreed) async {
-    final response = await NetworkUtils.getData(
-        '$baseURL/breeds/image/random/${breed.toLowerCase()}${subBreed.isNotEmpty ? '/$subBreed' : ''}');
-
-    if (response.statusCode == 200) {
-      return json.decode(response.body);
-    } else {
-      print('Error response: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      throw Exception('Failed to load dog image');
-    }
-  }
+  // static Future<Map<String, dynamic>> fetchRandomDogImageByBreed(
+  //     String breed, String subBreed) async {
+  //   final response = await NetworkUtils.getData(
+  //       '$baseURL/breeds/image/random/${breed.toLowerCase()}${subBreed.isNotEmpty ? '/$subBreed' : ''}');
+  //
+  //   if (response.statusCode == 200) {
+  //     return json.decode(response.body);
+  //   } else {
+  //     print('Error response: ${response.statusCode}');
+  //     print('Response body: ${response.body}');
+  //     throw Exception('Failed to load dog image');
+  //   }
+  // }
 
   static Future<List<String>> fetchDogImagesListByBreed(
       String breed, String subBreed) async {

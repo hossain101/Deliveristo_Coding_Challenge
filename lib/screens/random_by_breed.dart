@@ -1,3 +1,4 @@
+import 'package:deliveristo_coding_challenge/screens/random_image_breed.dart';
 import 'package:deliveristo_coding_challenge/widgets/breed_dropdown.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class Random_By_Breed extends StatefulWidget {
 
 class _Random_By_BreedState extends State<Random_By_Breed> {
   String breed = "";
-  String imageURL = "";
+
   Future<List<String>> breeds = DogAPI.fetchDogBreedsList();
   @override
   Widget build(BuildContext context) {
@@ -48,15 +49,27 @@ class _Random_By_BreedState extends State<Random_By_Breed> {
                   BreedDropdown(
                     breedList: breedList,
                     onChanged: (String? newValue) {
-                      setState(() {
-                        breed = newValue ?? '';
-                      });
+                      setState(() {});
+                      this.breed = BreedDropdown.breed;
+                      setState(() {});
                     },
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {},
-                    child: Text('Send to Next Page'),
+                    onPressed: () async {
+                      Navigator.push(
+                          context,
+                          await MaterialPageRoute(
+                              builder: (context) =>
+                                  RandomImageBreed(breed: breed)));
+                    },
+                    child: Text('Show Random Image'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.purple,
+                      foregroundColor: Colors.white,
+                      textStyle: TextStyle(fontSize: 20),
+                      minimumSize: Size(200, 50),
+                    ),
                   ),
                 ],
               ),
