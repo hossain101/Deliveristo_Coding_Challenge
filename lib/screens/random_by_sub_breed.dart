@@ -14,7 +14,7 @@ class Random_By_SubBreed extends StatefulWidget {
 }
 
 class _Random_By_SubBreed extends State<Random_By_SubBreed> {
-  String breed = "";
+  String breed = "affenpinscher";
   String subBreed = "";
 
   List<String>? breedList = [];
@@ -33,17 +33,20 @@ class _Random_By_SubBreed extends State<Random_By_SubBreed> {
     return subBreedList;
   }
 
-  // @override
-  // initState() {
-  //   super.initState();
-  // }
+  @override
+  initState() {
+    super.initState();
+
+    fetchBreeds().then((value) => fetchSubBreeds());
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // Wrap your widget with a Scaffold
       appBar: AppBar(
-        title: Text('Random Image by Breed'), // Set your app bar title
+        title:
+            const Text('Random Image by Sub-Breed'), // Set your app bar title
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -56,9 +59,8 @@ class _Random_By_SubBreed extends State<Random_By_SubBreed> {
                   return BreedDropdown(
                     breedList: breedList,
                     onChanged: (String? newValue) {
-                      setState(() {
-                        breed = newValue!;
-                      });
+                      breed = newValue!;
+
                       fetchSubBreeds().then((value) => setState(() {}));
                     },
                   );
@@ -100,9 +102,7 @@ class _Random_By_SubBreed extends State<Random_By_SubBreed> {
                     child: SubBreedDropdown(
                       subBreedList: subBreedList,
                       onChanged: (String? newValue) {
-                        setState(() {});
                         this.subBreed = newValue!;
-                        setState(() {});
                       },
                     ),
                   );
@@ -115,7 +115,7 @@ class _Random_By_SubBreed extends State<Random_By_SubBreed> {
                     context,
                     await MaterialPageRoute(
                         builder: (context) => RandomImageSubBreed(
-                            breed: breed, subBreed: this.subBreed)));
+                            breed: breed, subBreed: subBreed)));
               },
               child: Text('Show Random Image'),
               style: ElevatedButton.styleFrom(

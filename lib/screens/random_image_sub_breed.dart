@@ -10,8 +10,14 @@ class RandomImageSubBreed extends StatelessWidget {
   RandomImageSubBreed({super.key, required this.breed, required this.subBreed});
 
   Future<String> getDogImage() async {
-    final response = await DogAPI.fetchRandomDogImageSubBreed(breed, subBreed);
-    return response['message'] as String;
+    if (subBreed == null || subBreed.isEmpty) {
+      final response = await DogAPI.fetchRandomDogImageBreed(breed);
+      return response['message'] as String;
+    } else {
+      final response =
+          await DogAPI.fetchRandomDogImageSubBreed(breed, subBreed);
+      return response['message'] as String;
+    }
   }
 
   @override
