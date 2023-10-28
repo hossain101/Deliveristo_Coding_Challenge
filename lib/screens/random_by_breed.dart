@@ -12,7 +12,12 @@ class Random_By_Breed extends StatefulWidget {
 }
 
 class _Random_By_BreedState extends State<Random_By_Breed> {
-  String breed = "";
+  @override
+  initState() {
+    super.initState();
+  }
+
+  String breed = "affenpinscher";
 
   Future<List<String>> breeds = DogAPI.fetchDogBreedsList();
   @override
@@ -20,7 +25,7 @@ class _Random_By_BreedState extends State<Random_By_Breed> {
     return Scaffold(
       // Wrap your widget with a Scaffold
       appBar: AppBar(
-        title: Text('Random Image by Breed'), // Set your app bar title
+        title: const Text('Random Image by Breed'), // Set your app bar title
       ),
       body: FutureBuilder<List<String>>(
         future: breeds,

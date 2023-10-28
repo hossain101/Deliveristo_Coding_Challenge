@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class SubBreedDropdown extends StatefulWidget {
   final List<String>? subBreedList;
   final Function(String?) onChanged;
-  static String? subBreed;
 
   const SubBreedDropdown({
     super.key,
@@ -16,16 +15,17 @@ class SubBreedDropdown extends StatefulWidget {
 }
 
 class _SubBreedDropdownState extends State<SubBreedDropdown> {
+  late String? subBreed = widget.subBreedList![0];
   // Add this line
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       hint: Text('Select Breed'),
-      value: SubBreedDropdown.subBreed, // Use the instance variable here
+      value: subBreed, // Use the instance variable here
       onChanged: (String? newValue) {
         setState(() {
-          SubBreedDropdown.subBreed = newValue!; // And here
+          subBreed = newValue!; // And here
         });
         widget.onChanged(newValue);
       },
