@@ -5,7 +5,8 @@ class BreedDropdown extends StatefulWidget {
   final Function(String?) onChanged;
   static String breed = "affenpinscher";
 
-  BreedDropdown({required this.breedList, required this.onChanged});
+  const BreedDropdown(
+      {super.key, required this.breedList, required this.onChanged});
 
   @override
   State<BreedDropdown> createState() => _BreedDropdownState();

@@ -1,27 +1,53 @@
 import 'package:flutter/material.dart';
 
-class SubBreedDropdown extends StatelessWidget {
-  final List<String> subBreeds;
-  final String selectedSubBreed;
+class SubBreedDropdown extends StatefulWidget {
+  final List<String>? subBreedList;
   final Function(String?) onChanged;
+  static String? subBreed;
 
-  SubBreedDropdown({
-    required this.subBreeds,
-    required this.selectedSubBreed,
+  const SubBreedDropdown({
+    super.key,
+    required this.subBreedList,
     required this.onChanged,
   });
 
   @override
+  State<SubBreedDropdown> createState() => _SubBreedDropdownState();
+}
+
+class _SubBreedDropdownState extends State<SubBreedDropdown> {
+  // Add this line
+
+  @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      value: selectedSubBreed,
-      onChanged: onChanged,
-      items: subBreeds.map((String subBreed) {
+      hint: Text('Select Breed'),
+      value: SubBreedDropdown.subBreed, // Use the instance variable here
+      onChanged: (String? newValue) {
+        setState(() {
+          SubBreedDropdown.subBreed = newValue!; // And here
+        });
+        widget.onChanged(newValue);
+      },
+      items: widget.subBreedList!.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
-          value: subBreed, // Use a unique value for each sub-breed
-          child: Text(subBreed),
+          value: value,
+          child: Text(_capitalizeFirstLetter(value)),
         );
       }).toList(),
+      isExpanded: true,
+      itemHeight: 48,
+      iconSize: 36,
+      underline: Container(
+        height: 2,
+        color: Colors.black,
+      ),
+      style: TextStyle(fontSize: 25, color: Colors.black),
     );
+  }
+
+  String _capitalizeFirstLetter(String text) {
+    if (text.isEmpty) return text;
+    return text[0].toUpperCase() + text.substring(1);
   }
 }
