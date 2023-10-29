@@ -44,103 +44,135 @@ class _Random_By_SubBreed extends State<By_SubBreed> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Random Image by Sub-Breed'),
+        title: const Text('Sub-Breed'),
+        titleTextStyle: const TextStyle(
+          fontSize: 25,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+        backgroundColor: Colors.deepPurple[200],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            FutureBuilder(
-              future: fetchBreeds(), // Load breedList asynchronously
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  // Check if fetching breeds is done
-                  return BreedDropdown(
-                    breedList: breedList,
-                    onChanged: (String? newValue) {
-                      breed = newValue!;
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                "https://images.dog.ceo/breeds/springer-english/n02102040_1519.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FutureBuilder(
+                  future: fetchBreeds(), // Load breedList asynchronously
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      // Check if fetching breeds is done
+                      return BreedDropdown(
+                        breedList: breedList,
+                        onChanged: (String? newValue) {
+                          breed = newValue!;
 
-                      fetchSubBreeds().then((value) => setState(() {}));
-                    },
-                  );
-                } else if (snapshot.hasError) {
-                  // Handle error
-                  return Text("Error: ${snapshot.error}");
-                } else {
-                  return const CircularProgressIndicator();
-                }
-              },
-            ),
-            const SizedBox(height: 20),
-            FutureBuilder(
-              future: breedList!.isNotEmpty
-                  ? fetchSubBreeds()
-                  : Future.value(subBreedList),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(
-                    child:
-                        CircularProgressIndicator(), // Center the loading indicator
-                  );
-                } else if (snapshot.hasError) {
-                  return Center(
-                    child: Text(
-                        "Error: ${snapshot.error}"), // Display error message
-                  );
-                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return const Center(
-                    child:
-                        Text("No data available."), // Display no data message
-                  );
-                } else {
-                  subBreedList = snapshot.data;
-                  return Container(
-                    color: Colors.black54,
-                    padding: const EdgeInsets.all(
-                        20), // Add padding to the container
-                    child: SubBreedDropdown(
-                      subBreedList: subBreedList,
-                      onChanged: (String? newValue) {
-                        subBreed = newValue!;
-                      },
+                          fetchSubBreeds().then((value) => setState(() {}));
+                        },
+                      );
+                    } else if (snapshot.hasError) {
+                      // Handle error
+                      return Text("Error: ${snapshot.error}");
+                    } else {
+                      return const CircularProgressIndicator();
+                    }
+                  },
+                ),
+                const SizedBox(height: 10),
+                FutureBuilder(
+                  future: breedList!.isNotEmpty
+                      ? fetchSubBreeds()
+                      : Future.value(subBreedList),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child:
+                            CircularProgressIndicator(), // Center the loading indicator
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text(
+                            "Error: ${snapshot.error}"), // Display error message
+                      );
+                    } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                      return Container(
+                        color: Colors.black12,
+                        child: const Center(
+                          child: Text(
+                            "Sub-Breed N/A",
+                            style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold),
+                          ), // Display no data message
+                        ),
+                      );
+                    } else {
+                      subBreedList = snapshot.data;
+                      return SubBreedDropdown(
+                        subBreedList: subBreedList,
+                        onChanged: (String? newValue) {
+                          subBreed = newValue!;
+                        },
+                      );
+                    }
+                  },
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RandomImageSubBreed(
+                                      breed: breed, subBreed: subBreed)));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.purple,
+                          foregroundColor: Colors.white,
+                          textStyle: const TextStyle(fontSize: 20),
+                          minimumSize: const Size(200, 50),
+                        ),
+                        child: const Text('Random Image'),
+                      ),
                     ),
-                  );
-                }
-              },
+                    const SizedBox(width: 5),
+                    if (subBreedList!.isNotEmpty)
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ListImageSubBreed(
+                                        breed: breed, subBreed: subBreed)));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.purple,
+                            foregroundColor: Colors.white,
+                            textStyle: const TextStyle(fontSize: 20),
+                            minimumSize: const Size(200, 50),
+                          ),
+                          child: const Text('List Images'),
+                        ),
+                      ),
+                  ],
+                ),
+              ],
             ),
-            ElevatedButton(
-              onPressed: () async {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => RandomImageSubBreed(
-                            breed: breed, subBreed: subBreed)));
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purple,
-                foregroundColor: Colors.white,
-                textStyle: const TextStyle(fontSize: 20),
-                minimumSize: const Size(200, 50),
-              ),
-              child: const Text('Show Random Image'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () async {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ListImageSubBreed(
-                            breed: breed, subBreed: subBreed)));
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purple,
-                foregroundColor: Colors.white,
-                textStyle: const TextStyle(fontSize: 20),
-                minimumSize: const Size(200, 50),
-              ),
-              child: const Text('List Images'),
-            ),
-          ],
+          ),
         ),
       ),
     );

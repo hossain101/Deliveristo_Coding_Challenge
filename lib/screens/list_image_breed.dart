@@ -16,6 +16,12 @@ class ListImageBreed extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(breed),
+        titleTextStyle: const TextStyle(
+          fontSize: 25,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+        backgroundColor: Colors.deepPurple[200],
       ),
       body: FutureBuilder<List<String>>(
         future: getDogImages(),
@@ -31,10 +37,22 @@ class ListImageBreed extends StatelessWidget {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 final imageUrl = snapshot.data![index];
-                return Card(
+                return Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          "https://img.freepik.com/free-vector/gradient-minimalist-background_23-2150012317.jpg?w=1380&t=st=1698556077~exp=1698556677~hmac=649fe511dbbbc20d7fb897f14c79e7c00020d37cc14ada97df7dec69c8cda10c"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   child: Column(
                     children: [
-                      Text('Image ${index + 1}'), // Display the image number
+                      Text(
+                        'Image ${index + 1}',
+                        style: const TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ), // Display the image number
                       Image.network(imageUrl), // Display the image
                     ],
                   ),

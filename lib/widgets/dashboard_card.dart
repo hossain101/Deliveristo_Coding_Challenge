@@ -26,13 +26,16 @@ class DashboardCard extends StatelessWidget {
             ),
           ),
           child: Center(
-            child: Text(
-              title,
-              style: const TextStyle(
-                  fontSize: 26.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight
-                      .bold), // Set text color to white for better visibility
+            child: Container(
+              color: Colors.black45,
+              child: Text(
+                title,
+                style: const TextStyle(
+                    fontSize: 40.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight
+                        .bold), // Set text color to white for better visibility
+              ),
             ),
           ),
         ),

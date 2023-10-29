@@ -15,8 +15,19 @@ class BreedDropdown extends StatefulWidget {
 class _BreedDropdownState extends State<BreedDropdown> {
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      hint: const Text('Select Breed'),
+    return DropdownButtonFormField<String>(
+      decoration: InputDecoration(
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white, width: 3),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white, width: 3),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        filled: true,
+        fillColor: Colors.deepPurple[200],
+      ),
       value: BreedDropdown.breed,
       onChanged: (String? newValue) {
         setState(() {
@@ -27,18 +38,20 @@ class _BreedDropdownState extends State<BreedDropdown> {
       items: widget.breedList!.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: Text(_capitalizeFirstLetter(
-              value)), // Display each breed name with the first letter capitalized
+          child: Center(
+            child: Text(_capitalizeFirstLetter(value)),
+          ), // Display each breed name with the first letter capitalized
         );
       }).toList(),
       isExpanded: true,
-      itemHeight: 48,
+      itemHeight: 60,
       iconSize: 36,
-      underline: Container(
-        height: 2,
+      icon: const Icon(Icons.arrow_downward),
+      style: const TextStyle(
+        fontSize: 25,
         color: Colors.black,
+        fontWeight: FontWeight.bold,
       ),
-      style: const TextStyle(fontSize: 25, color: Colors.black),
     );
   }
 

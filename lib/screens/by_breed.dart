@@ -26,7 +26,13 @@ class _By_BreedState extends State<By_Breed> {
     return Scaffold(
       // Wrap your widget with a Scaffold
       appBar: AppBar(
-        title: const Text('Random Image by Breed'), // Set your app bar title
+        title: const Text('Random Image by Breed'),
+        titleTextStyle: const TextStyle(
+          fontSize: 25,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+        backgroundColor: Colors.deepPurple[200], // Set your app bar title
       ),
       body: FutureBuilder<List<String>>(
         future: breeds,
@@ -47,7 +53,13 @@ class _By_BreedState extends State<By_Breed> {
           } else {
             List<String>? breedList = snapshot.data;
             return Container(
-              color: Colors.black54,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                      "https://images.dog.ceo/breeds/finnish-lapphund/mochilamvan.jpg"),
+                  fit: BoxFit.cover,
+                ),
+              ),
               padding: const EdgeInsets.all(20), // Add padding to the container
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -61,38 +73,46 @@ class _By_BreedState extends State<By_Breed> {
                     },
                   ),
                   const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () async {
-                      Navigator.push(
-                          context,
-                          await MaterialPageRoute(
-                              builder: (context) =>
-                                  RandomImageBreed(breed: breed)));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.purple,
-                      foregroundColor: Colors.white,
-                      textStyle: const TextStyle(fontSize: 20),
-                      minimumSize: const Size(200, 50),
-                    ),
-                    child: const Text('Show Random Image'),
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () async {
-                      Navigator.push(
-                          context,
-                          await MaterialPageRoute(
-                              builder: (context) =>
-                                  ListImageBreed(breed: breed)));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.purple,
-                      foregroundColor: Colors.white,
-                      textStyle: const TextStyle(fontSize: 20),
-                      minimumSize: const Size(200, 50),
-                    ),
-                    child: const Text('List Image'),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        RandomImageBreed(breed: breed)));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.purple,
+                            foregroundColor: Colors.white,
+                            textStyle: const TextStyle(fontSize: 20),
+                            minimumSize: const Size(200, 50),
+                          ),
+                          child: const Text('Random Image'),
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ListImageBreed(breed: breed)));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.purple,
+                            foregroundColor: Colors.white,
+                            textStyle: const TextStyle(fontSize: 20),
+                            minimumSize: const Size(200, 50),
+                          ),
+                          child: const Text('List Image'),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
