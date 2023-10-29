@@ -2,51 +2,41 @@ import 'package:deliveristo_coding_challenge/widgets/dashboard_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Select Category'),
+        title: const Text('Select Category'),
+        titleTextStyle: const TextStyle(
+          fontSize: 25,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+        backgroundColor: Colors.deepPurple[200],
       ),
       body: Container(
         color: Colors.black54,
         child: Column(
-          //change the background color to blue
-
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Expanded(
                 child: DashboardCard(
-                    title: "Random Image by Breed Only",
+                    title: "Breed Only",
                     onTap: () {
                       Navigator.pushNamed(context, '/random_by_breed');
                     },
                     backgroundImage:
-                        "https://images.dog.ceo/breeds/cotondetulear/IMG_20160830_202631573.jpg")),
+                        "https://images.dog.ceo/breeds/mountain-swiss/n02107574_854.jpg")),
             Expanded(
                 child: DashboardCard(
-                    title: "Random Image by Sub-Breed",
+                    title: "Sub-Breed",
                     onTap: () {
                       Navigator.pushNamed(context, '/random_by_subBreed');
                     },
                     backgroundImage:
-                        "https://images.dog.ceo/breeds/pointer-german/n02100236_4657.jpg")),
-            Expanded(
-                child: DashboardCard(
-                    title: "Dog Images List by Breed",
-                    onTap: () {
-                      Navigator.pushNamed(context, '/list_by_breed');
-                    },
-                    backgroundImage:
-                        "https://images.dog.ceo/breeds/dachshund/Stretched_Dachshund.jpg")),
-            Expanded(
-                child: DashboardCard(
-                    title: "Dog Images List by Sub-Breed",
-                    onTap: () {
-                      Navigator.pushNamed(context, '/list_by_subBreed');
-                    },
-                    backgroundImage:
-                        "https://images.dog.ceo/breeds/shiba/kurosuke01.jpg")),
+                        "https://images.dog.ceo/breeds/hound-english/n02089973_4359.jpg")),
           ],
         ),
       ),

@@ -69,37 +69,35 @@ class DogAPI {
     }
   }
 
-// list all sub breeds get
-// static Future<Map<String, dynamic>> fetchRandomDogImageByBreed(
-//     String breed, String subBreed) async {
-//   final response = await NetworkUtils.getData(
-//       '$baseURL/breeds/image/random/${breed.toLowerCase()}${subBreed.isNotEmpty ? '/$subBreed' : ''}');
-//
-//   if (response.statusCode == 200) {
-//     return json.decode(response.body);
-//   } else {
-//     print('Error response: ${response.statusCode}');
-//     print('Response body: ${response.body}');
-//     throw Exception('Failed to load dog image');
-//   }
-// }
+  //Array of all the images for the breed
 
-//   static Future<List<String>> fetchDogImagesListByBreed(
-//       String breed, String subBreed) async {
-//     final response = await NetworkUtils.getData(
-//         '$baseURL/breed/$breed${subBreed.isNotEmpty ? '/$subBreed' : ''}/images');
-//
-//     final test = await NetworkUtils.getData(
-//         'https://dog.ceo/api/breed/hound/images/random/2');
-//
-//     if (test.statusCode == 200) {
-//       final data = json.decode(test.body);
-//       return List<String>.from(data['message']);
-//     } else {
-//       print('Error response: ${test.statusCode}');
-//       print('Response body: ${test.body}');
-//       throw Exception('Failed to load dog image');
-//     }
-//   }
-// }
+  static Future<List<String>> fetchDogImagesListByBreed(String breed) async {
+    final response = await NetworkUtils.getData('$baseURL/breed/$breed/images');
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return List<String>.from(data['message']);
+    } else {
+      print('Error response: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      throw Exception('Failed to load dog image');
+    }
+  }
+
+  //Array of all the images for the sub-breed
+
+  static Future<List<String>> fetchDogImagesListBySubBreed(
+      String breed, String subBreed) async {
+    final response =
+        await NetworkUtils.getData('$baseURL/breed/$breed/$subBreed/images');
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return List<String>.from(data['message']);
+    } else {
+      print('Error response: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      throw Exception('Failed to load dog image');
+    }
+  }
 }

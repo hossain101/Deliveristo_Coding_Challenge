@@ -16,12 +16,23 @@ class SubBreedDropdown extends StatefulWidget {
 
 class _SubBreedDropdownState extends State<SubBreedDropdown> {
   late String? subBreed = widget.subBreedList![0];
-  // Add this line
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      hint: Text('Select Breed'),
+    return DropdownButtonFormField<String>(
+      decoration: InputDecoration(
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.white, width: 3),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        border: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.white, width: 3),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        filled: true,
+        fillColor: Colors.deepPurple[200],
+      ),
+
       value: subBreed, // Use the instance variable here
       onChanged: (String? newValue) {
         setState(() {
@@ -38,11 +49,8 @@ class _SubBreedDropdownState extends State<SubBreedDropdown> {
       isExpanded: true,
       itemHeight: 48,
       iconSize: 36,
-      underline: Container(
-        height: 2,
-        color: Colors.black,
-      ),
-      style: TextStyle(fontSize: 25, color: Colors.black),
+
+      style: const TextStyle(fontSize: 25, color: Colors.black),
     );
   }
 

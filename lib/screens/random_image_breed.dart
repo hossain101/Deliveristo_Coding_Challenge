@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:deliveristo_coding_challenge/api/dog_api.dart'; // Import your DogAPI class
-import 'package:deliveristo_coding_challenge/models/dog.dart'; // Import your Dog model
-import 'package:deliveristo_coding_challenge/widgets/breed_dropdown.dart'; // Import your BreedDropdown widget
-import 'package:deliveristo_coding_challenge/widgets/sub_breed_dropdown.dart'; // Import your SubBreedDropdown widget
+import 'package:deliveristo_coding_challenge/api/dog_api.dart';
 
 class RandomImageBreed extends StatelessWidget {
   final String breed;
@@ -19,22 +16,36 @@ class RandomImageBreed extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(breed),
+        titleTextStyle: const TextStyle(
+          fontSize: 25,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+        backgroundColor: Colors.deepPurple[200],
       ),
       body: FutureBuilder<String>(
         future: getDogImage(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text("Error: ${snapshot.error}"));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text("No image available"));
+            return const Center(child: Text("No image available"));
           } else {
             return Container(
-              child: Image.network(
-                snapshot.data!,
-                width: 300,
-                height: 300,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                      "https://img.freepik.com/free-vector/gradient-minimalist-background_23-2150012317.jpg?w=1380&t=st=1698556077~exp=1698556677~hmac=649fe511dbbbc20d7fb897f14c79e7c00020d37cc14ada97df7dec69c8cda10c"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Center(
+                child: Image.network(
+                  snapshot.data!,
+                  fit: BoxFit.cover,
+                ),
               ),
             );
           }

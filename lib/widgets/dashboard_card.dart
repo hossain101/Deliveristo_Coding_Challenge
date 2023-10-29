@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
-class DashboardCard extends  StatelessWidget {
+
+class DashboardCard extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
   final String backgroundImage; // New property for background image URL
 
-  const DashboardCard({ required this.title, required this.onTap, required this.backgroundImage});
+  const DashboardCard(
+      {super.key,
+      required this.title,
+      required this.onTap,
+      required this.backgroundImage});
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +21,20 @@ class DashboardCard extends  StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image:  NetworkImage(backgroundImage), // Load image from URL
+              image: NetworkImage(backgroundImage), // Load image from URL
               fit: BoxFit.cover,
             ),
           ),
-          child: Container(
-           // padding: EdgeInsets.all(40.0),
-            child: Center(
+          child: Center(
+            child: Container(
+              color: Colors.black45,
               child: Text(
                 title,
-                style: TextStyle(fontSize: 26.0, color: Colors.white,fontWeight: FontWeight.bold), // Set text color to white for better visibility
+                style: const TextStyle(
+                    fontSize: 40.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight
+                        .bold), // Set text color to white for better visibility
               ),
             ),
           ),
@@ -34,4 +43,3 @@ class DashboardCard extends  StatelessWidget {
     );
   }
 }
-
