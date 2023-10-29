@@ -2,11 +2,13 @@ import 'package:deliveristo_coding_challenge/widgets/dashboard_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Select Category'),
+        title: const Text('Select Category'),
       ),
       body: Container(
         color: Colors.black54,
@@ -31,22 +33,6 @@ class HomeScreen extends StatelessWidget {
                     },
                     backgroundImage:
                         "https://images.dog.ceo/breeds/pointer-german/n02100236_4657.jpg")),
-            Expanded(
-                child: DashboardCard(
-                    title: "Dog Images List by Breed",
-                    onTap: () {
-                      Navigator.pushNamed(context, '/list_by_breed');
-                    },
-                    backgroundImage:
-                        "https://images.dog.ceo/breeds/dachshund/Stretched_Dachshund.jpg")),
-            Expanded(
-                child: DashboardCard(
-                    title: "Dog Images List by Sub-Breed",
-                    onTap: () {
-                      Navigator.pushNamed(context, '/list_by_subBreed');
-                    },
-                    backgroundImage:
-                        "https://images.dog.ceo/breeds/shiba/kurosuke01.jpg")),
           ],
         ),
       ),

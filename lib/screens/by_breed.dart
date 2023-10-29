@@ -6,7 +6,7 @@ import '../api/dog_api.dart';
 import 'list_image_breed.dart';
 
 class By_Breed extends StatefulWidget {
-  By_Breed({super.key});
+  const By_Breed({super.key});
 
   @override
   State<By_Breed> createState() => _By_BreedState();
@@ -32,7 +32,7 @@ class _By_BreedState extends State<By_Breed> {
         future: breeds,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child:
                   CircularProgressIndicator(), // Center the loading indicator
             );
@@ -41,14 +41,14 @@ class _By_BreedState extends State<By_Breed> {
               child: Text("Error: ${snapshot.error}"), // Display error message
             );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(
+            return const Center(
               child: Text("No data available."), // Display no data message
             );
           } else {
             List<String>? breedList = snapshot.data;
             return Container(
               color: Colors.black54,
-              padding: EdgeInsets.all(20), // Add padding to the container
+              padding: const EdgeInsets.all(20), // Add padding to the container
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -56,11 +56,11 @@ class _By_BreedState extends State<By_Breed> {
                     breedList: breedList,
                     onChanged: (String? newValue) {
                       setState(() {});
-                      this.breed = BreedDropdown.breed;
+                      breed = BreedDropdown.breed;
                       setState(() {});
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () async {
                       Navigator.push(
@@ -69,15 +69,15 @@ class _By_BreedState extends State<By_Breed> {
                               builder: (context) =>
                                   RandomImageBreed(breed: breed)));
                     },
-                    child: Text('Show Random Image'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
                       foregroundColor: Colors.white,
-                      textStyle: TextStyle(fontSize: 20),
-                      minimumSize: Size(200, 50),
+                      textStyle: const TextStyle(fontSize: 20),
+                      minimumSize: const Size(200, 50),
                     ),
+                    child: const Text('Show Random Image'),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () async {
                       Navigator.push(
@@ -86,13 +86,13 @@ class _By_BreedState extends State<By_Breed> {
                               builder: (context) =>
                                   ListImageBreed(breed: breed)));
                     },
-                    child: Text('LIst Image'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
                       foregroundColor: Colors.white,
-                      textStyle: TextStyle(fontSize: 20),
-                      minimumSize: Size(200, 50),
+                      textStyle: const TextStyle(fontSize: 20),
+                      minimumSize: const Size(200, 50),
                     ),
+                    child: const Text('List Image'),
                   ),
                 ],
               ),

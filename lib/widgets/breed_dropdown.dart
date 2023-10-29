@@ -16,7 +16,7 @@ class _BreedDropdownState extends State<BreedDropdown> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      hint: Text('Select Breed'),
+      hint: const Text('Select Breed'),
       value: BreedDropdown.breed,
       onChanged: (String? newValue) {
         setState(() {
@@ -38,7 +38,7 @@ class _BreedDropdownState extends State<BreedDropdown> {
         height: 2,
         color: Colors.black,
       ),
-      style: TextStyle(fontSize: 25, color: Colors.black),
+      style: const TextStyle(fontSize: 25, color: Colors.black),
     );
   }
 

@@ -1,16 +1,16 @@
 import "package:flutter/material.dart";
 
 import "../api/dog_api.dart";
-import "../widgets/sub_breed_dropdown.dart";
 
 class RandomImageSubBreed extends StatelessWidget {
   final String breed;
   final String subBreed;
 
-  RandomImageSubBreed({super.key, required this.breed, required this.subBreed});
+  const RandomImageSubBreed(
+      {super.key, required this.breed, required this.subBreed});
 
   Future<String> getDogImage() async {
-    if (subBreed == null || subBreed.isEmpty) {
+    if (subBreed.isEmpty) {
       final response = await DogAPI.fetchRandomDogImageBreed(breed);
       return response['message'] as String;
     } else {
@@ -30,11 +30,11 @@ class RandomImageSubBreed extends StatelessWidget {
         future: getDogImage(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text("Error: ${snapshot.error}"));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text("No image available"));
+            return const Center(child: Text("No image available"));
           } else {
             return Container(
               child: Image.network(

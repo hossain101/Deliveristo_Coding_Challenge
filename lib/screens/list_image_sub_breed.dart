@@ -23,11 +23,11 @@ class ListImageSubBreed extends StatelessWidget {
         future: getDogImages(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text("Error: ${snapshot.error}"));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text("No images available"));
+            return const Center(child: Text("No images available"));
           } else {
             return ListView.builder(
               itemCount: snapshot.data!.length,
