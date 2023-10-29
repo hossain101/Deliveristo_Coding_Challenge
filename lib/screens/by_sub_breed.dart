@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../api/dog_api.dart';
 import '../widgets/breed_dropdown.dart';
+import 'list_image_sub_breed.dart';
 
 class By_SubBreed extends StatefulWidget {
   By_SubBreed({super.key});
@@ -118,6 +119,23 @@ class _Random_By_SubBreed extends State<By_SubBreed> {
                             breed: breed, subBreed: subBreed)));
               },
               child: Text('Show Random Image'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.purple,
+                foregroundColor: Colors.white,
+                textStyle: TextStyle(fontSize: 20),
+                minimumSize: Size(200, 50),
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () async {
+                Navigator.push(
+                    context,
+                    await MaterialPageRoute(
+                        builder: (context) => ListImageSubBreed(
+                            breed: breed, subBreed: subBreed)));
+              },
+              child: Text('List Images'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,
                 foregroundColor: Colors.white,
