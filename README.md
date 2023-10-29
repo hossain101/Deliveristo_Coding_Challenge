@@ -1,9 +1,11 @@
 # UI
-![Dashboard](https://github.com/hossain101/deliveristo_coding_challenge/assets/80954453/1b3a2022-3ec8-4bc3-b706-90cf31516f30)
+<img src="https://github.com/hossain101/deliveristo_coding_challenge/assets/80954453/1b3a2022-3ec8-4bc3-b706-90cf31516f30" width="300" height="600" alt="Dashboard">
 
-![by_sub_breed](https://github.com/hossain101/deliveristo_coding_challenge/assets/80954453/47a75e78-9c43-4c5b-8557-6c5fa20c9f6e)
+<img src="https://github.com/hossain101/deliveristo_coding_challenge/assets/80954453/47a75e78-9c43-4c5b-8557-6c5fa20c9f6e" width="300" height="600" alt="By Breed">
 
-![random_by_breed](https://github.com/hossain101/deliveristo_coding_challenge/assets/80954453/b2800b2d-8bc6-4a8a-83cb-2db2e156e496)
+
+<img src="https://github.com/hossain101/deliveristo_coding_challenge/assets/80954453/b2800b2d-8bc6-4a8a-83cb-2db2e156e496" width="300" height="600" alt="By Sub Breed">
+
 
 # Architecture
 deliveristo_coding_challenge/
@@ -43,7 +45,7 @@ deliveristo_coding_challenge/
 - To make sub-breed list button visible, you have to select a breed with sub-breed available e.g. "hound","bulldog","mastiff","retriever","sheepdog","terrier".
 
 # Author
-- [Shoaib Hossain](
+- [Shoaib Hossain]
 - [LinkedIn](https://www.linkedin.com/in/shoaib-hossain-5bb080236/)
-  )
+  
 
