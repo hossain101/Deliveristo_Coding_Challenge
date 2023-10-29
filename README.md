@@ -11,6 +11,7 @@
 - This app is using a simple MVVM (Model-View-ViewModel) architecture to separate UI code from business logic. 
 - This will help maintain a clean and organized codebase.
 
+<pre>
 deliveristo_coding_challenge/
 ├── lib/
 │   ├── main.dart
@@ -31,7 +32,7 @@ deliveristo_coding_challenge/
 │   │   └── sub_breed_dropdown.dart
 │   └── utils/
 │       └── network_utils.dart
-
+</pre>
 
 # Dependencies
 - http: ^1.1.0

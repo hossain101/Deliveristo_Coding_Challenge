@@ -26,7 +26,7 @@ class _By_BreedState extends State<By_Breed> {
     return Scaffold(
       // Wrap your widget with a Scaffold
       appBar: AppBar(
-        title: const Text('Random Image by Breed'),
+        title: const Text('By Breed'),
         titleTextStyle: const TextStyle(
           fontSize: 25,
           color: Colors.black,

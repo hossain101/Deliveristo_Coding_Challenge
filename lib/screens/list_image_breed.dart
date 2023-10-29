@@ -15,7 +15,7 @@ class ListImageBreed extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(breed),
+        title: Text(_capitalizeFirstLetter(breed)),
         titleTextStyle: const TextStyle(
           fontSize: 25,
           color: Colors.black,
@@ -64,4 +64,9 @@ class ListImageBreed extends StatelessWidget {
       ),
     );
   }
+}
+
+String _capitalizeFirstLetter(String text) {
+  if (text.isEmpty) return text;
+  return text[0].toUpperCase() + text.substring(1);
 }
