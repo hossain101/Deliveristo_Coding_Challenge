@@ -1,10 +1,10 @@
 # UI
-<img src="https://github.com/hossain101/deliveristo_coding_challenge/assets/80954453/1b3a2022-3ec8-4bc3-b706-90cf31516f30" width="300" height="600" alt="Dashboard">
+<img src="https://github.com/hossain101/deliveristo_coding_challenge/assets/80954453/1b3a2022-3ec8-4bc3-b706-90cf31516f30" width="250" height="300" alt="Dashboard">
 
-<img src="https://github.com/hossain101/deliveristo_coding_challenge/assets/80954453/47a75e78-9c43-4c5b-8557-6c5fa20c9f6e" width="300" height="600" alt="By Breed">
+<img src="https://github.com/hossain101/deliveristo_coding_challenge/assets/80954453/47a75e78-9c43-4c5b-8557-6c5fa20c9f6e" width="250" height="300" alt="By Breed">
 
 
-<img src="https://github.com/hossain101/deliveristo_coding_challenge/assets/80954453/b2800b2d-8bc6-4a8a-83cb-2db2e156e496" width="300" height="600" alt="By Sub Breed">
+<img src="https://github.com/hossain101/deliveristo_coding_challenge/assets/80954453/b2800b2d-8bc6-4a8a-83cb-2db2e156e496" width="250" height="300" alt="By Sub Breed">
 
 
 # Architecture
