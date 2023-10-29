@@ -7,7 +7,7 @@ import 'package:deliveristo_coding_challenge/widgets/sub_breed_dropdown.dart'; /
 class RandomImageBreed extends StatelessWidget {
   final String breed;
 
-  const RandomImageBreed({super.key, required this.breed});
+  RandomImageBreed({super.key, required this.breed});
 
   Future<String> getDogImage() async {
     final response = await DogAPI.fetchRandomDogImageBreed(breed);

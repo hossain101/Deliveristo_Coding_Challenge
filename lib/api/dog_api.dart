@@ -69,6 +69,21 @@ class DogAPI {
     }
   }
 
+  //Array of all the images for the breed
+
+  static Future<List<String>> fetchDogImagesListByBreed(String breed) async {
+    final response = await NetworkUtils.getData('$baseURL/breed/$breed/images');
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return List<String>.from(data['message']);
+    } else {
+      print('Error response: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      throw Exception('Failed to load dog image');
+    }
+  }
+
 // list all sub breeds get
 // static Future<Map<String, dynamic>> fetchRandomDogImageByBreed(
 //     String breed, String subBreed) async {

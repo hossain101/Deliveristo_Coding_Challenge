@@ -3,15 +3,16 @@ import 'package:deliveristo_coding_challenge/widgets/breed_dropdown.dart';
 import 'package:flutter/material.dart';
 
 import '../api/dog_api.dart';
+import 'list_image_breed.dart';
 
-class Random_By_Breed extends StatefulWidget {
-  Random_By_Breed({super.key});
+class By_Breed extends StatefulWidget {
+  By_Breed({super.key});
 
   @override
-  State<Random_By_Breed> createState() => _Random_By_BreedState();
+  State<By_Breed> createState() => _By_BreedState();
 }
 
-class _Random_By_BreedState extends State<Random_By_Breed> {
+class _By_BreedState extends State<By_Breed> {
   @override
   initState() {
     super.initState();
@@ -69,6 +70,23 @@ class _Random_By_BreedState extends State<Random_By_Breed> {
                                   RandomImageBreed(breed: breed)));
                     },
                     child: Text('Show Random Image'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.purple,
+                      foregroundColor: Colors.white,
+                      textStyle: TextStyle(fontSize: 20),
+                      minimumSize: Size(200, 50),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () async {
+                      Navigator.push(
+                          context,
+                          await MaterialPageRoute(
+                              builder: (context) =>
+                                  ListImageBreed(breed: breed)));
+                    },
+                    child: Text('LIst Image'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
                       foregroundColor: Colors.white,

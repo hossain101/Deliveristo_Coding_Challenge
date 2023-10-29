@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
           children: <Widget>[
             Expanded(
                 child: DashboardCard(
-                    title: "Random Image by Breed Only",
+                    title: "By Breed Only",
                     onTap: () {
                       Navigator.pushNamed(context, '/random_by_breed');
                     },
@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                         "https://images.dog.ceo/breeds/cotondetulear/IMG_20160830_202631573.jpg")),
             Expanded(
                 child: DashboardCard(
-                    title: "Random Image by Sub-Breed",
+                    title: "By Sub-Breed",
                     onTap: () {
                       Navigator.pushNamed(context, '/random_by_subBreed');
                     },

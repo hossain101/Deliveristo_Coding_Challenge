@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import '../api/dog_api.dart';
 import '../widgets/breed_dropdown.dart';
 
-class Random_By_SubBreed extends StatefulWidget {
-  Random_By_SubBreed({super.key});
+class By_SubBreed extends StatefulWidget {
+  By_SubBreed({super.key});
 
   @override
-  State<Random_By_SubBreed> createState() => _Random_By_SubBreed();
+  State<By_SubBreed> createState() => _Random_By_SubBreed();
 }
 
-class _Random_By_SubBreed extends State<Random_By_SubBreed> {
+class _Random_By_SubBreed extends State<By_SubBreed> {
   String breed = "affenpinscher";
   String subBreed = "";
 
